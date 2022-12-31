@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int evalRPN(vector<string>& tokens) {
+        stack<long long> st;
+        for(auto it: tokens){
+            if(it!="+" && it!="-" && it!="*" && it!="/"){
+                st.push(stoll(it));
+            }
+            else{
+                long long a=st.top();st.pop();
+                long long b=st.top();st.pop();
+                if(it=="+")
+                    st.push(a+b);
+                else if(it=="-")
+                    st.push(b-a);
+                else if(it=="*")
+                    st.push(a*b);
+                else
+                    st.push(b/a);
+            }
+        }
+        return st.top();
+    }
+};
