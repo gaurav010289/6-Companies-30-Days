@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int t(int n){
+        int d = 0;
+        while(n % 2 == 0){
+            d++;
+            n /= 2;
+        }
+        return d;
+    }
+    int f(int n){
+        int d = 0;
+        while(n % 5 == 0){
+            d++;
+            n /= 5;
+        }
+        return d;
+    }
+    int trailingZeroes(int n) {
+        int two = 0, five = 0;
+        for(int i = 2;i<=n;i++){
+            two += t(i);
+            five += f(i);
+        }
+        return min(two,five);
+    }
+};
